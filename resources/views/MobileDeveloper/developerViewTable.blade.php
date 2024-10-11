@@ -18,7 +18,7 @@
             <th>Designation</th>
             <th>Company</th>
             <th>Working_experience</th>
-            <th>State</th>
+            {{-- <th>State</th> --}}
             <th>Action</th>
         </tr>
     </thead>
@@ -34,7 +34,7 @@
             <td>{{ $mobiledev->working_experience }}</td>
             <td>{{ $mobiledev->state }}</td>
             
-            <td>
+            {{-- <td>
                  
                
                 <select name="" id="">
@@ -49,7 +49,9 @@
           
 
 
-            </td>
+            </td> --}}
+
+
             {{-- </td>
                 <button class="btn-sm bg-primary">edit</button>
                 <button class="btn-sm bg-danger">
