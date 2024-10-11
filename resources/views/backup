@@ -170,3 +170,127 @@
         </div>
     </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{{-- <form method="POST" action="{{ route('register') }}">
+@csrf
+
+<h2>Register Form</h2>
+
+<div>
+    <label for="name">{{ __('Name') }}</label>
+    <input id="name" class="block mt-1 w-full form-control" type="text" name="name" placeholder="Enter Your Name" value="{{ old('name') }}" required autofocus autocomplete="name" />
+</div><br><br>
+
+<div class="mt-4">
+    <label for="email">{{ __('Email') }}</label>
+    <input id="email" class="block mt-1 w-full form-control" type="email" name="email" value="{{ old('email') }}" placeholder="Enter Your Email" required autocomplete="username" />
+</div><br><br>
+
+<div class="mt-4">
+    <label for="password">{{ __('Password') }}</label>
+    <input id="password" class="block mt-1 w-full form-control" type="password" name="password" required autocomplete="new-password" placeholder="Enter Your Password" />
+    <x-input-error :messages="$errors->get('password')" class="mt-2" />
+</div><br><br>
+
+<div class="mt-4">
+    <label for="password_confirmation">{{ __('Confirm Password') }}</label>
+    <input id="password_confirmation" class="block mt-1 w-full form-control" type="password" name="password_confirmation" required autocomplete="new-password" placeholder="Enter Your Confirm Pass.." />
+    <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" /> 
+</div><br><br>
+
+
+
+<div class="flex items-center justify-end mt-4">
+    <a href="{{ route('login') }}">
+        {{ __('Already registered?') }}
+    </a>
+
+    <button>
+        {{ __('Register') }}
+    </button>
+</div>
+</form>
+
+{{-- <script src="https://www.google.com/recaptcha/api.js" async defer></script> --}}
+
+
+
+
+
+{{-- <style>
+body{
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, Helvetica, sans-serif;
+  }
+  form{
+      background: rgb(11, 138, 106);  
+      align-items: center;
+      justify-content: center;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%,-50%);
+      padding: 70px;
+      border-radius: 20px;
+      text-align: center;
+  }
+--}}
+  {{-- #email{
+      /* border-radius: 10px; */
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+  }
+
+  #name{
+      /* border-radius: 10px; */
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+  }
+  
+
+  #password{
+      /* border-radius: 10px; */
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+  }   
+  #password_confirmation{
+      /* border-radius: 10px; */
+      justify-content: center;
+      align-items: center; 
+      text-align: center;
+  } --}}
+{{-- </style>  --}}

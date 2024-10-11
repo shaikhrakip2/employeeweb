@@ -10,12 +10,21 @@ class MobileDevelopers extends Controller
 {
 
     public function adddevelopers(){
-        return view('MobileDeveloper.addnewDevelopers');
+
+        $citys = config('state');
+        $d = compact('citys');
+        
+        return view('MobileDeveloper.addnewDevelopers')->with($d);
     }
     
     public function developersviewtable(Request $request){
         $mobiledeveloper = MobileDeveloper::all();
-        $data = compact('mobiledeveloper');
+        
+        $citys = config('state');
+        // echo "<pre>";
+        // print_r($citys);exit;
+
+        $data = compact('mobiledeveloper','citys');
         return view('MobileDeveloper.developerViewTable')->with($data);
     }
 

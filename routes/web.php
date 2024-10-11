@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EventController;
+use App\Http\Controllers\WebDevelopers;
 
 Route::get('/', function () {
     return view('welcome');
@@ -20,6 +21,15 @@ Route::get('/dashboard', function () {
 
 
 route::post('/storenewemployee', [UserController::class,'storenewemployee'])->name('storenewemployee');
+
+
+
+
+
+Route::get('users', [WebDevelopers::class, 'create'])->name('users');
+Route::post('users/store', [WebDevelopers::class, 'store']);
+
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
