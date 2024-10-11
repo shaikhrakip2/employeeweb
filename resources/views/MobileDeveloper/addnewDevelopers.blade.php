@@ -22,7 +22,7 @@
                         <div class="form-group"> <label>Working_experience</label> <input type="working_experience" class="form-control" name="working_experience" placeholder="Enter Your working_experience"> </div>
                     
                         
-                       <div>                   
+                       {{-- <div>                   
                         <label for="options">Choose Your State</label>
                         <select id="options" name="options" class="col-md-12 form-control">
                                 <option>None</option>
@@ -30,7 +30,7 @@
                                 <option value="{{  $state['code'] }}">{{ $state['name'] }}</option>
                                 @endforeach
                             </select>
-                        </div><br><br>
+                        </div><br><br> --}}
                     
 
                         <div class="checkbox"> <label> <input type="checkbox"> Check me out
