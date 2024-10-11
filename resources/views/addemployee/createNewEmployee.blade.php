@@ -49,7 +49,4 @@
         </section>
     </div>
 
-
-    
-
 @endsection

@@ -37,7 +37,7 @@
            <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" /> 
         </div>
 
-        <div class="flex items-center justify-center" style="margin-top: 35px; padding:20px">
+        <div class="flex items-center justify-center" style="flex; margin-top: 35px; padding:20px; box-sizing: border-box; ">
             {!!htmlFormSnippet()!!}
 
             @if($errors->has('g-recaptcha-response') )
@@ -50,8 +50,7 @@
             @endif
         </div>
         
-        {{-- hover:text-gray-900  --}}
-        {{-- text-gray-600 --}}
+
         <div class="flex items-center justify-end">
             <a class="underline text-sm text-white  rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-900" href="{{ route('login') }}">
                 {{ __('Already registered?') }}
@@ -72,17 +71,7 @@
 
 
 
-
-
 {{-- 
-
-
-
-
-
-
-
-
     <form method="POST" action="{{ route('register') }}">
         @csrf
           

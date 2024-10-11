@@ -7,13 +7,16 @@
         <section class="panel panel-default scrollable padder">
 
             <form action="">
-                <span style="margin:5px">
+                <span  class="col-sm-6" style="display: flex; padding: 20px;">
                     <a>
                         Search:<input type="search" id="" class="form-control" name="search" placeholder="" value="{{ $search }}">
                     </a>
+                    
+                <button type="search" id="search" class="btn btn-primary btn-sm justify-center"
+                 style="flex;height: 31px; margin-top: 19px;
+                         padding-bottom: 27px;">search</button>
                 </span>
 
-                <button type="search" id="search" class="btn btn-primary">search</button>
             </form>
 
 
@@ -115,15 +118,6 @@
 
 </script>
 
-
-<style>
-    /* #search {
-        position: absolute;
-        top: 77.1px;
-        border-radius: 10px;
-    } */
-
-</style>
 
 
 

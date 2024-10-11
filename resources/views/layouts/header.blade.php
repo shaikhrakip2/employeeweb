@@ -18,14 +18,9 @@
     <script src="{{ url('frontend/js/datatables/jquery.dataTables.min.js') }}"></script>
     <script src="{{ url('frontend/js/datatables/demo.js') }}"></script>
     <script src="{{ url('frontend/js/custom.js') }}"></script>
-
-
-
     <link rel="stylesheet" href="frontend/css/dataTables.bootstrap4.css">
     <link rel="stylesheet" href="frontend/css/responsive.bootstrap4.css">
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js" integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
      
@@ -61,19 +56,12 @@
 
         <ul class="nav navbar-nav navbar-right m-n hidden-xs nav-user">
             <li class="hidden-xs">
-
-
-
                 <section class="dropdown-menu aside-xl">
                     <section class="panel bg-white">
-
                     </section>
                 </section>
             </li>
             <li class="dropdown hidden-xs">
-
-
-
                 <section class="dropdown-menu aside-xl animated fadeInUp">
                     <section class="panel bg-white">
                         <form role="search">
@@ -87,8 +75,6 @@
                     </section>
                 </section>
             </li>
-
-
             <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                     <span class="thumb-sm avatar pull-left"> <img src="{{ url('frontend/images/man.png') }}">
@@ -101,7 +87,6 @@
 
                     <li class="divider"></li>
                     <li>
-
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf
                             <x-responsive-nav-link :href="route('logout')" class="logoicon"
@@ -109,12 +94,9 @@
                                         this.closest('form').submit();">
                                 {{ __('Log Out') }}
                             </x-responsive-nav-link>
-
-
                         </form>
                     </li>
                 </ul>
-
             </li>
         </ul>
     </header>

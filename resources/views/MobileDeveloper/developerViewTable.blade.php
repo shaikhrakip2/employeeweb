@@ -32,7 +32,8 @@
             <td>{{ $mobiledev->designation }}</td>
             <td>{{ $mobiledev->company }}</td>
             <td>{{ $mobiledev->working_experience }}</td>
-
+            <td>{{ $mobiledev->state }}</td>
+            
             <td>
                  
                
