@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -55,7 +56,8 @@ route::get('/viewemployeedata/{id}', [UserController::class, 'viewemployeedata']
 
 
 
-
+// / contact home page
+route::get('/contact',[ContactController::class,'contact']);
 
 
 

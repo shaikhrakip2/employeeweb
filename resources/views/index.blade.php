@@ -7,7 +7,7 @@
                     <section class="vbox">
                         <section class="scrollable padder">
                             <ul class="breadcrumb no-border no-radius b-b b-light pull-in">
-                                <li><a href="backend.index"><i class="fa fa-home"></i> Home</a></li>
+                                <li><a href="{{ url('/') }}"><i class="fa fa-home"></i> Home</a></li>
                                 <li class="active">Employees WorkSheet</li>
                             </ul>
                             <div class="m-b-md">
