@@ -18,7 +18,7 @@
             <th>Designation</th>
             <th>Company</th>
             <th>Working_experience</th>
-            {{-- <th>State</th> --}}
+            <th>country</th>
             <th>Action</th>
         </tr>
     </thead>
@@ -32,15 +32,12 @@
             <td>{{ $mobiledev->designation }}</td>
             <td>{{ $mobiledev->company }}</td>
             <td>{{ $mobiledev->working_experience }}</td>
-            <td>{{ $mobiledev->state }}</td>
-            
-            {{-- <td>
-                 
-               
+            {{-- <td>{{ $mobiledev->countries }}</td> --}}            
+            <td>
                 <select name="" id="">
-                @foreach($citys as $state)
-                <option value="{{ $state['code'] }}">
-                    {{ $state['name'] }}
+                @foreach($citys as $city)
+                <option value="{{ $city['code'] }}">
+                    {{ $city['name'] }}
                 </option>
             @endforeach
         </select>
@@ -49,7 +46,7 @@
           
 
 
-            </td> --}}
+            </td>
 
 
             {{-- </td>
