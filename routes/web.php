@@ -77,3 +77,4 @@ Route::post('api/fetch-cities', [DropdownController::class, 'fetchCity']);
 require __DIR__.'/auth.php';
 
 require __DIR__.'/mobiledeveloper.php';
+require __DIR__.'/Inputfield.php';
