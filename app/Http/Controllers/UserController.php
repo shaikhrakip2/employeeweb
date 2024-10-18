@@ -9,12 +9,64 @@ use App\Models\Employee;
 use Illuminate\Auth\Events\Validated;
 use Termwind\Components\Raw;
 
+
 class UserController extends Controller
 {
-    public function index()
+    public function welcome()
     {
-        return view('index');
+        return view('welcome');
     }
+
+
+    public function index(Request $request)
+    {
+        $users = User::all();
+        // echo "<pre>";
+        // print_r($users);die;
+        $data = compact('users');
+        return view('index')->with($data);
+    }
+
+
+    public function edituser($id)
+    {
+        $users = User::find($id);
+        $data = compact('users');
+        return view('UserEditForm.useredit')->with($data);
+    }
+
+
+
+
+    public function storeedituser($id, Request $request)
+    {
+        $users = User::find($id);
+        $users->name = $request->input('name');
+        $users->email = $request->input('email');
+        $users->save();
+        return redirect('/dashboard');
+    }
+
+
+
+
+
+
+    public function userdestroy($id)
+    {
+        $user = User::find($id);
+        if (!$user) {
+            return redirect('/dashboard');
+        } else {
+            $user->delete();
+        }
+
+        return redirect('/dashboard');
+    }
+
+    // end user
+
+
 
     public function addnewemployee()
     {
@@ -33,10 +85,10 @@ class UserController extends Controller
     //         'state' => 'required',
     //     ]);
 
-        
+
     //     if ($request->hasFile('image')) {
     //         $imagePath = $request->file('image')->store('images', 'public');
-        
+
 
 
     //     $user = new Employee();
@@ -63,13 +115,13 @@ class UserController extends Controller
             'city' => 'required',
             'state' => 'required',
         ]);
-    
+
         // Check if the request has an image
         if ($request->hasFile('image')) {
             try {
                 // Store the image and get the path
                 $imagePath = $request->file('image')->store('images', 'public');
-    
+
                 // Create a new employee record
                 $user = new Employee();
                 $user->name = $request->input('name');
@@ -79,18 +131,18 @@ class UserController extends Controller
                 $user->city = $request->input('city');
                 $user->state = $request->input('state');
                 $user->save();
-    
+
                 // Redirect with success message
                 return redirect('totalemployee')->with('success', 'Employee created successfully!');
             } catch (\Exception $e) {
                 return redirect()->back()->withErrors(['image' => 'Failed to upload image.']);
             }
         }
-    
+
         // If no image was uploaded, return an error response
         return redirect()->back()->withErrors(['image' => 'Image is required.']);
     }
-    
+
 
 
 
@@ -139,7 +191,7 @@ class UserController extends Controller
         $user->name = $request->input('name');
         $user->email = $request->input('email');
         $user->mobile = $request->input('mobile');
-        
+
         $user->city = $request->input('city');
         $user->state = $request->input('state');
         $user->save();

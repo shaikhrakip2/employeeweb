@@ -1,0 +1,13 @@
+@media screen and (min-width: 320px) and (max-width: 870px) {
+    .ayurvedabannerdown-bg,.footerup-bg,.ayurvedabannerdown-bg
+    {
+        display: none;
+    }
+
+    .body
+    {
+        background-color: red;
+    }
+}
+
+

@@ -7,18 +7,38 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DropdownController;
 
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+Route::get('/',[UserController::class,'welcome']);
 
 route::get('index', [UserController::class,'index']);
 
 route::get('/addnewemployee',[UserController::class,'addnewemployee'])->name('addnewemployee');
 route::get('/totalemployee', [UserController::class, 'totalemployee'])->name('totalemployee');
 
-Route::get('/dashboard', function () {
-    return view('index');
-})->middleware(['auth', 'verified'])->name('dashboard');
+// Route::get('/dashboard', function () {   
+//     return view('index');
+// })->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::get('/dashboard',[UserController::class,'index'])->middleware(['auth', 'verified'])->name('dashboard');
+
+// dashboard delete
+Route::get('/dashboard/delete/{id}', [UserController::class,'userdestroy'])->name('user-delete');
+
+
+Route::get('/dashboard/edit/{id}', [UserController::class,'edituser'])->name('edit-user');
+
+Route::post('/dashboard/edit-store', [UserController::class,'storeedituser'])->name('edit-store');
+
+
+
+
+//end user
+
+
+
 
 
 route::post('/storenewemployee', [UserController::class,'storenewemployee'])->name('storenewemployee');
@@ -77,4 +97,4 @@ Route::post('api/fetch-cities', [DropdownController::class, 'fetchCity']);
 require __DIR__.'/auth.php';
 
 require __DIR__.'/mobiledeveloper.php';
-require __DIR__.'/Inputfield.php';
+require __DIR__.'/Inputfield.php';  
