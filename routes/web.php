@@ -4,7 +4,7 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\DropdownController;
+
 
 
 // Route::get('/', function () {
@@ -34,10 +34,6 @@ Route::post('/dashboard/edit-store/{id}', [UserController::class,'storeedituser'
 
 
 //end user
-
-
-
-
 
 route::post('/storenewemployee', [UserController::class,'storenewemployee'])->name('storenewemployee');
 
@@ -81,12 +77,7 @@ route::get('/contact',[ContactController::class,'contact']);
 
 
 
-// state country city
-Route::get('/dropdown', [DropdownController::class, 'index']);
 
-Route::post('api/fetch-states', [DropdownController::class, 'fetchState']);
-
-Route::post('api/fetch-cities', [DropdownController::class, 'fetchCity']);
 
 
 
@@ -94,3 +85,4 @@ Route::post('api/fetch-cities', [DropdownController::class, 'fetchCity']);
 require __DIR__.'/auth.php';
 require __DIR__.'/mobiledeveloper.php';
 require __DIR__.'/Inputfield.php';  
+require __DIR__.'/country.php';

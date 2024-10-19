@@ -49,13 +49,19 @@ class UserController extends Controller
     public function userdestroy($id)
     {
         $user = User::find($id);
-        if (!$user) {
-            return redirect('/dashboard');
-        } else {
-            $user->delete();
-        }
+        // if (!$user) {
+        //     return redirect('/dashboard');
+        // } else {
+        //     $user->delete();
+        // }
+        $user->delete();
+       
+        
         return redirect('/dashboard');
     }
+
+
+    
 
     // end user
 
@@ -151,10 +157,13 @@ class UserController extends Controller
         } else {
             $users = Employee::all();
         }
+               
+
         $message = count($users) > 0 ? 'Search completed successfully.' : 'No results found..';
         
-        $data = compact('users', 'search', 'message');
+        $data = compact('users', 'search','message');
         return view('totalEmployee.totalemployee')->with($data);
+
     }
 
 

@@ -40,29 +40,14 @@
                                 class="fa-stack fa-2x pull-left m-r-sm"> <i class="fa fa-circle fa-stack-2x icon-muted"></i>
                                 <i class="fa fa-clock-o fa-stack-1x text-white"></i> </span> <a class="clear"
                                 href="#"> <span class="h3 block m-t-xs"><strong>31:50</strong></span> <small
-                                    class="text-muted text-uc">Left to exit</small> </a> </div>
+                            class="text-muted text-uc">Left to exit</small> </a> </div>
                     </div>
-
-
                 </section><br>
-
-
                 @if (session('success'))
-                    <div id="success-message" class="alert alert-success" style="font-weight: 10px;">
+                    <div id="success-message" class="alert alert-success" style="font-weight: bold">
                         {{ session('success') }}
                     </div>
                 @endif
-
-
-
-
-
-
-
-
-
-
-
                 <section id="content">
                     <section class="panel panel-default scrollable padder">
                         <div class="row">
@@ -83,7 +68,6 @@
                                                 <tbody>
                                                     @foreach ($users as $user)
                                                         <tr>
-
                                                             <td>{{ $user->name }}</td>
                                                             <td>{{ $user->email }}</td>
                                                             <td>{{ $user->created_at }}</td>
@@ -94,28 +78,23 @@
                                                                     <i class="fa-solid fa-pen-to-square"></i>
                                                                 </a>
                                                                 <a href="{{ route('user-delete', $user->id) }}"
-                                                                    class="btn btn-danger  "><i
-                                                                        class="fa-solid fa-trash"></i></a>
+                                                                class="btn btn-danger  "><i
+                                                              class="fa-solid fa-trash"></i></a>
                                                             </td>
                                                         </tr>
                                                     @endforeach
-
                                                 </tbody>
                                             </table>
-                    </section>
-                </section>
-
-
-                <script>
-                    window.onload = function() {
-                        var successMessage = document.getElementById('success-message');
-                        if (successMessage) {
-                            setTimeout(function() {
-                                successMessage.style.display = 'none';
-                            }, 2000);
-                        }
-                    };
-
-
-                </script>
-            @endsection
+                                       </section>
+                                   </section>
+                                    <script>
+                                        window.onload = function() {
+                                            var successMessage = document.getElementById('success-message');
+                                            if (successMessage) {
+                                                setTimeout(function() {
+                                                    successMessage.style.display = 'none';
+                                                }, 2000);
+                                            }
+                                        };
+                                    </script>
+                                @endsection
