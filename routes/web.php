@@ -30,9 +30,7 @@ Route::get('/dashboard/delete/{id}', [UserController::class,'userdestroy'])->nam
 
 Route::get('/dashboard/edit/{id}', [UserController::class,'edituser'])->name('edit-user');
 
-Route::post('/dashboard/edit-store', [UserController::class,'storeedituser'])->name('edit-store');
-
-
+Route::post('/dashboard/edit-store/{id}', [UserController::class,'storeedituser'])->name('edit-store');
 
 
 //end user
@@ -81,10 +79,9 @@ route::get('/contact',[ContactController::class,'contact']);
 
 
 
+
+
 // state country city
-
-    
-
 Route::get('/dropdown', [DropdownController::class, 'index']);
 
 Route::post('api/fetch-states', [DropdownController::class, 'fetchState']);
@@ -95,6 +92,5 @@ Route::post('api/fetch-cities', [DropdownController::class, 'fetchCity']);
 
 
 require __DIR__.'/auth.php';
-
 require __DIR__.'/mobiledeveloper.php';
 require __DIR__.'/Inputfield.php';  

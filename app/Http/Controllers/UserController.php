@@ -17,7 +17,6 @@ class UserController extends Controller
         return view('welcome');
     }
 
-
     public function index(Request $request)
     {
         $users = User::all();
@@ -27,29 +26,24 @@ class UserController extends Controller
         return view('index')->with($data);
     }
 
-
     public function edituser($id)
     {
         $users = User::find($id);
         $data = compact('users');
         return view('UserEditForm.useredit')->with($data);
     }
-
-
-
-
     public function storeedituser($id, Request $request)
     {
+
         $users = User::find($id);
         $users->name = $request->input('name');
         $users->email = $request->input('email');
         $users->save();
+
+        session()->flash('success', 'User  ' . $users->name . ' updated successfully');
+
         return redirect('/dashboard');
     }
-
-
-
-
 
 
     public function userdestroy($id)
@@ -60,7 +54,6 @@ class UserController extends Controller
         } else {
             $user->delete();
         }
-
         return redirect('/dashboard');
     }
 
@@ -73,36 +66,6 @@ class UserController extends Controller
         return view('addemployee.createNewEmployee');
     }
 
-    // public function storenewemployee(Request $request)
-    // {
-
-    //     $request->validate([
-    //         'name' => 'required',
-    //         'email' => 'required | email',
-    //         'mobile' => 'required',
-    //         'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-    //         'city' => 'required',
-    //         'state' => 'required',
-    //     ]);
-
-
-    //     if ($request->hasFile('image')) {
-    //         $imagePath = $request->file('image')->store('images', 'public');
-
-
-
-    //     $user = new Employee();
-    //     $user->name = $request->input('name');
-    //     $user->email = $request->input('email');
-    //     $user->mobile = $request->input('mobile');
-    //     $user->image = $imagePath;
-    //     $user->city = $request->input('city');
-    //     $user->state = $request->input('state');
-    //     $user->save();  
-    //     return redirect('totalemployee');
-
-    //     }
-    // }
 
 
     public function storenewemployee(Request $request)
@@ -155,23 +118,48 @@ class UserController extends Controller
 
 
 
+    // public function totalemployee(Request $request)
+    // {
+
+
+
+    //     $search = $request['search'] ?? "";
+    //     if ($search != "") {
+    //         $users = Employee::where('name' , 'like', "{$search}%")->get();
+    //     } else {
+    //         $users = Employee::all();
+    //     }
+
+
+    //     // echo "<pre>";
+    //     // print_r($users);die;
+    //     $data = compact('users', 'search');
+    //     return view('totalEmployee.totalemployee')->with($data);
+    // }
+
+
+
+
+
     public function totalemployee(Request $request)
     {
+        $search = $request->input('search', "");
+        $users = [];
 
-
-
-        $search = $request['search'] ?? "";
         if ($search != "") {
             $users = Employee::where('name', 'like', "{$search}%")->get();
         } else {
             $users = Employee::all();
         }
-
-        // echo "<pre>";
-        // print_r($users);die;
-        $data = compact('users', 'search');
+        $message = count($users) > 0 ? 'Search completed successfully.' : 'No results found..';
+        
+        $data = compact('users', 'search', 'message');
         return view('totalEmployee.totalemployee')->with($data);
     }
+
+
+
+
 
 
 

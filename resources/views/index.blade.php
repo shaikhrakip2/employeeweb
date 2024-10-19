@@ -44,7 +44,15 @@
                     </div>
 
 
-                </section>
+                </section><br>
+
+
+                @if (session('success'))
+                    <div id="success-message" class="alert alert-success" style="font-weight: 10px;">
+                        {{ session('success') }}
+                    </div>
+                @endif
+
 
 
 
@@ -96,4 +104,18 @@
                                             </table>
                     </section>
                 </section>
+
+
+                <script>
+                    window.onload = function() {
+                        var successMessage = document.getElementById('success-message');
+                        if (successMessage) {
+                            setTimeout(function() {
+                                successMessage.style.display = 'none';
+                            }, 2000);
+                        }
+                    };
+
+
+                </script>
             @endsection
