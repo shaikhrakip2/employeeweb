@@ -10,27 +10,19 @@
                         <a>
                             Search:<input type="search" id="" class="form-control" name="search" placeholder=""
                                 value="{{ $search }}"
-
-                                @if (isset($message)) 
-                                <div class="alert alert-info " >
+                                @if (isset($message)) <div class="alert alert-info " >
                                 {{ $message }}
                             </div>
                             @else
                             <div class="alert alert-danger">
                                 No message available.
-                            </div>
-                             @endif
-                   
+                            </div> @endif
+                                {{-- <div id="message">php echo $message; </div> --}} </a>
 
 
 
-                            {{-- <div id="message">php echo $message; </div> --}}
-                        </a>
-
-
-
-                        <button type="search" id="search" class="btn btn-primary btn-sm justify-center"
-                            style="flex;height: 31px; margin-top: 19px;
+                            <button type="search" id="search" class="btn btn-primary btn-sm justify-center"
+                                style="flex;height: 31px; margin-top: 19px;
                          padding-bottom: 27px;">search</button>
                     </span>
 
@@ -48,14 +40,25 @@
 
 
 
+
+
                 <div class="row">
                     <div class="col-md-12 mb-3">
                         <div class="card">
                             <div class="card-body">
+
                                 <div class="table-responsive">
                                     <table id="tableemployee" class="table table-striped table-hover">
                                         <thead>
                                             <tr>
+                                                <th><input type="checkbox" name="checkbox" id="selectAllCheckbox"></th>
+
+                                                <th>
+                                                    <select name="" id="" class="form-control">
+                                                        <option value="">select</option>
+                                                        <option value="">Delete</option>
+                                                    </select>
+                                                </th>
 
                                                 <th>Name</th>
                                                 <th>Email</th>
@@ -69,7 +72,8 @@
                                         <tbody>
                                             @foreach ($users as $user)
                                                 <tr>
-
+                                                    <td><input type="checkbox" name="checkbox" class="userCheckbox"></td>
+                                                    <td></td>
                                                     <td>{{ $user->name }}</td>
                                                     <td>{{ $user->email }}</td>
                                                     <td>{{ $user->mobile }}</td>
@@ -80,22 +84,22 @@
                                                     <td>{{ $user->city }}</td>
                                                     <td>{{ $user->state }}</td>
                                                     <td>
-                                                        <a href="{{ route('viewemployeedata', $user->id) }}">
-                                                            <button class="btn btn-info" title="view">
-                                                                <i class="fa fa-eye"></i>
-                                                            </button></a>
+                                                        <a href="" class="btn btn-info" data-toggle="modal"
+                                                            data-target="#exampleModal">
+                                                            <i class="fa fa-eye"></i>
+                                                        </a>
 
-                                                        <a href="{{ route('edit-employee', $user->id) }}">
+                                                        <a href="{{ route('edit-employee', $user->id) }} ">
                                                             <button class="btn btn-primary" title="edit">
                                                                 <i class="fa fa-edit"></i>
-                                                            </button></a>
+                                                            </button>
+                                                        </a>
 
                                                         <a href="{{ url('/delete') }}/{{ $user->id }}"
                                                             onclick="confirmation(event)">
                                                             <button class="btn btn-danger" title="delete" data-id="">
                                                                 <i class="fa fa-trash-o"></i>
                                                             </button></a>
-
                                                     </td>
                                                 </tr>
                                             @endforeach
@@ -113,14 +117,7 @@
     </section>
 
 
-    {{-- <style>
-        #message {
-            color:  echo isset($color); ;
-            font-weight: bold;
-            display:flex;
-            transition: opacity 1s;
-        }
-    </style> --}}
+  
 
     <script>
         function confirmation(ev) {
@@ -139,7 +136,18 @@
                     }
                 })
         }
+
+
+
+        document.getElementById('selectAllCheckbox').onclick = function() {
+            var checkboxes = document.querySelectorAll('.userCheckbox');
+            checkboxes.forEach(checkbox => {
+                checkbox.checked = this.checked;
+            });
+        };
     </script>
+
+
     {{-- <script>
 
         setTimeout(function() {
@@ -150,4 +158,80 @@
             }, 1000); 
         }, 1000); 
     </script> --}}
-@endsection
+
+
+
+<style>
+    .close{
+        position: absolute;
+        left: 95%;
+        top: 10%;
+        transform: translate(-95%,-10%);
+    }
+   
+</style>
+    <div class="modal fade" style="position: absolute; top: 50%; left: 50%; transform:translate(-50%,-50%);"
+        id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Employee Information</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+
+
+                    <div class="row">
+                        <div class="col-md-12 mb-3">
+                            <div class="card">
+                                <div class="card-body">
+
+                                    <div class="table-responsive">
+                                        <table id="tableemployee" class="table table-striped table-hover">
+                                            <thead>
+                                                <tr>
+                                                    <th>ID</th>
+                                                    <th>Name</th>
+                                                    <th>Email</th>
+                                                    <th>Mobile</th>
+                                                    <th>Image</th>
+                                                    <th>city</th>
+                                                    <th>State</th>
+                                                   
+
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <form action="{{ route('viewemployeedata', $user->id) }}">
+                                                    <tr>
+                                                        <td>{{ $user->id }}</td>
+                                                        <td>{{ $user->name }}</td>
+                                                        <td>{{ $user->email }}</td>
+                                                        <td>{{ $user->mobile }}</td>
+                                                        <td><img src="{{ Storage::url($user->image) }}"
+                                                                alt="user Image {{ $user->image }}"
+                                                                style="max-width: 50px; height: 50px; border-radius: 10px;">
+                                                        </td>
+                                                        <td>{{ $user->city }}</td>
+                                                        <td>{{ $user->state }}</td>
+                                                    </tr>
+
+                                                </form>
+
+                                            </tbody>
+                                        </table>
+
+
+
+
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        <button type="button" class="btn btn-primary">Save</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    @endsection

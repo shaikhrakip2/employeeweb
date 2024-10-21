@@ -40,7 +40,7 @@
                                 class="fa-stack fa-2x pull-left m-r-sm"> <i class="fa fa-circle fa-stack-2x icon-muted"></i>
                                 <i class="fa fa-clock-o fa-stack-1x text-white"></i> </span> <a class="clear"
                                 href="#"> <span class="h3 block m-t-xs"><strong>31:50</strong></span> <small
-                            class="text-muted text-uc">Left to exit</small> </a> </div>
+                                    class="text-muted text-uc">Left to exit</small> </a> </div>
                     </div>
                 </section><br>
                 @if (session('success'))
@@ -48,6 +48,9 @@
                         {{ session('success') }}
                     </div>
                 @endif
+                {{-- 
+                <button type="button" class="btn btn-danger">delete</button><br><br>
+                
                 <section id="content">
                     <section class="panel panel-default scrollable padder">
                         <div class="row">
@@ -58,6 +61,7 @@
                                             <table id="tableemployee" class="table table-striped table-hover">
                                                 <thead>
                                                     <tr>
+                                                        <th><input type="checkbox" class="selectAll" name="checkbox">
                                                         <th>Name</th>
                                                         <th>Email</th>
                                                         <th>Created</th>
@@ -68,6 +72,7 @@
                                                 <tbody>
                                                     @foreach ($users as $user)
                                                         <tr>
+                                                            <td><input type="checkbox" name="checkbox"></td>
                                                             <td>{{ $user->name }}</td>
                                                             <td>{{ $user->email }}</td>
                                                             <td>{{ $user->created_at }}</td>
@@ -96,5 +101,102 @@
                                                 }, 2000);
                                             }
                                         };
-                                    </script>
-                                @endsection
+                                    </script> --}}
+
+
+
+
+               <button type="button" class="btn btn-danger" id="deleteSelected">Delete Selected</button><br><br>
+             
+                <section id="content">
+                    <section class="panel panel-default scrollable padder">
+                        <div class="row">
+                            <div class="col-md-12 mb-3">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="table-responsive">
+                                            <table id="tableemployee" class="table table-striped table-hover">
+                                                <thead>
+                                                    <tr>
+                                                        <th><input type="checkbox" class="selectAll" id="selectAllCheckbox">
+                                                        </th>
+                                                        <th>Name</th>
+                                                        <th>Email</th>
+                                                        <th>Created</th>
+                                                        <th>Updated</th>
+                                                        <th>Action</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    @foreach ($users as $user)
+                                                        <tr>
+                                                            <td><input type="checkbox" class="userCheckbox" name="checkbox"
+                                                                    value="{{ $user->id }}"></td>
+                                                            <td>{{ $user->name }}</td>
+                                                            <td>{{ $user->email }}</td>
+                                                            <td>{{ $user->created_at }}</td>
+                                                            <td>{{ $user->updated_at }}</td>
+                                                            <td>
+                                                                <a href="{{ url('/dashboard/edit') }}/{{ $user->id }}"
+                                                                    class="btn btn-primary">
+                                                                    <i class="fa-solid fa-pen-to-square"></i>
+                                                                </a>
+                                                                <a href="{{ route('user-delete', $user->id) }}"
+                                                                    class="btn btn-danger">
+                                                                    <i class="fa-solid fa-trash"></i>
+                                                                </a>
+                                                            </td>
+                                                        </tr>
+                                                    @endforeach
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </section>
+
+                <script>
+                    document.getElementById('selectAllCheckbox').onclick = function() {
+                        var checkboxes = document.querySelectorAll('.userCheckbox');
+                        checkboxes.forEach(checkbox => {
+                            checkbox.checked = this.checked;
+                        });
+                    };
+
+                    
+                    document.getElementById('deleteSelected').onclick = function() {
+                        var checkboxes = document.querySelectorAll('.userCheckbox:checked');
+                        if (checkboxes.length === 0) {
+                            alert("Please select at least one user to delete.");
+                            return;
+                        }    
+                        
+                        if (confirm("Are you sure you want to delete the selected users?")) {
+                            checkboxes.forEach(checkbox => {
+                                const userId = checkbox.value;
+                                checkbox.closest('tr').remove();
+                            });
+                        }   
+                    };
+
+
+                    
+                </script>
+                <script>
+                    window.onload = function() {
+                        var successMessage = document.getElementById('success-message');
+                        if (successMessage) {
+                            setTimeout(function() {
+                                successMessage.style.display = 'none';
+                            }, 2000);
+                        }
+                    };
+                </script>
+            @endsection
+
+
+
+            {{-- php artisan db:seed --class=CountryStateCitySeeder --}}

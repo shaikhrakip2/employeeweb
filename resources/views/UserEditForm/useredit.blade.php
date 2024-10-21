@@ -32,7 +32,6 @@
             @endif
         </div>
 
-
         <div class="flex items-center justify-end">
             <a class="underline text-sm text-white  rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-900"
                 href="{{ route('login') }}">
