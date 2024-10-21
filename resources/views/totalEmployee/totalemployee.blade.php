@@ -204,6 +204,7 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
+
                                                 <form action="{{ route('viewemployeedata', $user->id) }}">
                                                     <tr>
                                                         <td>{{ $user->id }}</td>
