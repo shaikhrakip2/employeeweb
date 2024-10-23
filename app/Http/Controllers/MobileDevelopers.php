@@ -11,8 +11,13 @@ class MobileDevelopers extends Controller
 
     public function adddevelopers()
     {
-        $citys = config('state');
-        $d = compact('citys');
+        $state = config('state');
+        $d = compact('state');
+
+        // echo "<pre>";
+        // print_r($d);die;
+
+
         return view('MobileDeveloper.addnewDevelopers')->with($d);
     }
 

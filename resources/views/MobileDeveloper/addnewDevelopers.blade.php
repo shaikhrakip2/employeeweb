@@ -63,12 +63,18 @@
                         
                        <div>                   
                         <label for="options">Choose Your State</label>
-                        {{-- <select id="options" name="options" class="col-md-12 form-control">
+
+                        <select id="options" name="options" class="col-md-12 form-control">
                                 <option>None</option>
-                                @foreach($citys as $key => $state)      
+
+                                @foreach($state as $key => $state)      
+
                                 <option value="{{  $state['code'] }}">{{ $state['name'] }}</option>
                                 @endforeach
-                            </select> --}}
+
+
+                            </select>
+
                         </div><br>
                         <div class="checkbox"> <label> <input type="checkbox"> Check me out
                             </label> </div> <button type="submit" class="btn btn-sm btn-default">Submit</button>
