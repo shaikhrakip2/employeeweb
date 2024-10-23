@@ -53,6 +53,7 @@ class MobileDevelopers extends Controller
         $mobiledeveloper->designation = $request->input('designation');
         $mobiledeveloper->company = $request->input('company');
         $mobiledeveloper->working_experience = $request->input('working_experience');
+
         $mobiledeveloper->save();
         return redirect('/developerViewTable');
     }

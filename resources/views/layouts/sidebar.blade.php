@@ -47,6 +47,11 @@
                                                     class="active"> <i class="fa fa-angle-right"></i> <span><b>View
                                                             Mobile Developers</b></span>
                                                 </a> </li>
+
+                                            <li class="active"> <a href="{{ url('/dropdown') }}"
+                                                    class="active"> <i class="fa fa-angle-right"></i> <span><b>View
+                                                            Country Dropdown</b></span>
+                                                </a> </li>
                                         </ul>
                                     </li>
                                 </ul>

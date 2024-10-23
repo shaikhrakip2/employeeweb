@@ -54,7 +54,7 @@
                                                 <th><input type="checkbox" name="checkbox" id="selectAllCheckbox"></th>
 
                                                 <th>
-                                                    <select name="" id="" class="form-control">
+                                                    <select name="" id="" class="select">
                                                         <option value="">select</option>
                                                         <option value="">Delete</option>
                                                     </select>
@@ -117,7 +117,7 @@
     </section>
 
 
-  
+
 
     <script>
         function confirmation(ev) {
@@ -161,15 +161,32 @@
 
 
 
-<style>
-    .close{
-        position: absolute;
-        left: 95%;
-        top: 10%;
-        transform: translate(-95%,-10%);
-    }
-   
-</style>
+    <style>
+        .close {
+            position: absolute;
+            left: 95%;
+            top: 9%;
+            font-size: 30px;
+            transform: translate(-95%, -10%);
+        }
+
+        @media only screen and(max-width: 1400px){
+            .select{
+                padding: 5px;
+            }
+        }
+
+        @media only screen and(max-width: 1400px) {
+            .modal {
+                width: 50%;
+            }
+        }
+
+        .modal {
+            width: 100%;
+            height: auto;
+        }
+    </style>
     <div class="modal fade" style="position: absolute; top: 50%; left: 50%; transform:translate(-50%,-50%);"
         id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -180,6 +197,7 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
+
                 <div class="modal-body">
 
 
@@ -199,7 +217,7 @@
                                                     <th>Image</th>
                                                     <th>city</th>
                                                     <th>State</th>
-                                                   
+
 
                                                 </tr>
                                             </thead>
@@ -232,7 +250,14 @@
                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                                         <button type="button" class="btn btn-primary">Save</button>
                                     </div>
+
                                 </div>
                             </div>
                         </div>
-                    @endsection
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+@endsection

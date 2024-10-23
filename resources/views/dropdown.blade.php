@@ -1,48 +1,25 @@
-<!DOCTYPE html>
-
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-
-<head>
-
-    <meta charset="utf-8">
-
-    <meta name="csrf-token" content="content">
-
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-   
-
-    <!-- CSS only -->
-
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet">
-
-</head>
-
-<body>
-
-    <div class="container mt-4" >
+@extends('layouts.main')
+@section('main-container')
+    <div class="container mt-4">
 
         <div class="row justify-content-center">
 
-            <div class="col-md-8">
+            <div class="col-md-12">
 
                 <div class="alert alert-primary mb-4 text-center">
 
-                </div> 
+                </div>
 
 
+                <form action="">
 
-
-                <form>
                     <div class="form-group mb-3">
-                        <select  id="country-dropdown" class="form-control">
-                            <option value="">-- Select Country --</option>
+                        <select id="country-dropdown" class="form-control">
+                            <option value="">Select Country</option>
                             @foreach ($countries as $data)
-                            <option value="{{$data->id}}">
-                                {{$data->name}}
-                            </option>
+                                <option value="{{ $data->id }}">
+                                    {{ $data->name }}
+                                </option>
                             @endforeach
                         </select>
                     </div>
@@ -54,6 +31,8 @@
                         <select id="city-dropdown" class="form-control">
                         </select>
                     </div>
+                    
+                    <button type="button" class="btn btn-primary" style="width:100% ">save</button>
                 </form>
 
 
@@ -65,27 +44,16 @@
 
     </div>
 
-  
+
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
     <script>
+        $(document).ready(function() {
 
-        $(document).ready(function () {
 
-  
 
-            /*------------------------------------------
-
-            --------------------------------------------
-
-            Country Dropdown Change Event
-
-            --------------------------------------------
-
-            --------------------------------------------*/
-
-            $('#country-dropdown').on('change', function () {
+            $('#country-dropdown').on('change', function() {
 
                 var idCountry = this.value;
 
@@ -93,7 +61,7 @@
 
                 $.ajax({
 
-                    url: "{{url('api/fetch-states')}}",
+                    url: "{{ url('api/fetch-states') }}",
 
                     type: "POST",
 
@@ -101,17 +69,18 @@
 
                         country_id: idCountry,
 
-                        _token: '{{csrf_token()}}'
+                        _token: '{{ csrf_token() }}'
 
                     },
 
                     dataType: 'json',
 
-                    success: function (result) {
+                    success: function(result) {
 
-                        $('#state-dropdown').html('<option value="">-- Select State --</option>');
+                        $('#state-dropdown').html(
+                            '<option value="">Select State</option>');
 
-                        $.each(result.states, function (key, value) {
+                        $.each(result.states, function(key, value) {
 
                             $("#state-dropdown").append('<option value="' + value
 
@@ -119,7 +88,7 @@
 
                         });
 
-                        $('#city-dropdown').html('<option value="">-- Select City --</option>');
+                        $('#city-dropdown').html('<option value="">Select City</option>');
 
                     }
 
@@ -127,19 +96,8 @@
 
             });
 
-  
 
-            /*------------------------------------------
-
-            --------------------------------------------
-
-            State Dropdown Change Event
-
-            --------------------------------------------
-
-            --------------------------------------------*/
-
-            $('#state-dropdown').on('change', function () {
+            $('#state-dropdown').on('change', function() {
 
                 var idState = this.value;
 
@@ -147,7 +105,7 @@
 
                 $.ajax({
 
-                    url: "{{url('api/fetch-cities')}}",
+                    url: "{{ url('api/fetch-cities') }}",
 
                     type: "POST",
 
@@ -155,17 +113,17 @@
 
                         state_id: idState,
 
-                        _token: '{{csrf_token()}}'
+                        _token: '{{ csrf_token() }}'
 
                     },
 
                     dataType: 'json',
 
-                    success: function (res) {
+                    success: function(res) {
 
                         $('#city-dropdown').html('<option value="">-- Select City --</option>');
 
-                        $.each(res.cities, function (key, value) {
+                        $.each(res.cities, function(key, value) {
 
                             $("#city-dropdown").append('<option value="' + value
 
@@ -179,12 +137,8 @@
 
             });
 
-  
+
 
         });
-
     </script>
-
-</body>
-
-</html>
+@endsection
